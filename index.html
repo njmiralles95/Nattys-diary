@@ -1,241 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Natty's Diary</title>
+    <title>Dear Nate :) </title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Fonts for handwritten & elegant look -->
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Playfair+Display&display=swap" rel="stylesheet">
 
-<style>
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5efe6; /* base color for header */
+        }
 
-body{
-font-family:'Playfair Display', serif;
-margin:0;
-background:#f5efe6;
+        header {
+            text-align: center;
+            padding: 30px 0;
+		}
+       header h1 {
+    font-size: 4em;          /* increase this number to make it bigger */
+    font-family: 'Playfair Display', serif;  /* elegant font you already linked */
+    color: #333;             /* optional: change text color */
+    text-align: center;
+    margin: 0;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3); /* optional shadow for elegance */
 }
+		 .secondary-header {
+        font-size: 3em;  /* slightly smaller than main header */
+        font-family: 'Playfair Display', serif;
+        color: #333;
+        margin: 20px 0 40px 0;
+        text-align: left;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
 
-/* MAIN HEADER */
+        /* Month section with background */
+        .background-section {
+            background-image: url("b2.jpg"); /* your b2.jpg background */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 40px 0;
+            position: relative; /* for absolute positioned decorations */
+            color: #fff;
+        }
 
-header{
-text-align:center;
-padding:30px;
-}
+        /* Add overlay for better text readability */
+        .background-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); /* dark overlay */
+            z-index: 1;
+        }
 
-header h1{
-font-size:4em;
-margin:0;
-text-shadow:2px 2px 6px rgba(0,0,0,0.3);
-}
+        .month-title, .subtitle, .scrapbook, .sticky-note, .reflection {
+            position: relative;
+            z-index: 2; /* bring above overlay */
+        }
 
-.secondary-header{
-font-size:3em;
-margin:10px 0 40px 0;
-text-align:center;
-text-shadow:2px 2px 6px rgba(0,0,0,0.3);
-}
+        .month-title {
+            text-align: center;
+            font-family: Georgia, serif;
+            font-size: 2.8em; /* slightly bigger */
+            margin-bottom: 10px;
+            color: #fff; /* white text for contrast */
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7); /* subtle shadow for readability */
+        }
 
-/* MONTH SECTION */
+        /* Subtitles under month title */
+        .subtitle {
+            text-align: center;
+            font-family: 'Handlee', cursive;
+            color: #f0e6d2;
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .subtitle:first-of-type {
+            font-weight: bold;
+        }
+        .subtitle:last-of-type {
+            font-style: italic;
+        }
 
-.background-section{
-background:#f5efe6;
-padding:50px 0;
-}
+        .scrapbook {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            padding-top: 30px;
+        }
 
-.month-title{
-text-align:center;
-font-size:2.2em;
-margin-bottom:40px;
-}
+        .polaroid {
+            background: white;
+            padding: 15px 15px 30px 15px;
+            width: 220px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+            position: relative;
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+        .polaroid:nth-child(even) {
+            transform: rotate(2deg);
+        }
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
 
-/* SCRAPBOOK GRID */
+        /* Optional tape effect on corners */
+        .tape {
+            position: absolute;
+            width: 40px;
+            height: 15px;
+            background: #fdf1c7;
+            transform: rotate(-15deg);
+            top: -5px;
+            left: -5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
 
-.scrapbook{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:40px;
-width:80%;
-margin:auto;
-}
+        .polaroid img {
+            width: 100%;
+        }
 
-/* POLAROID STYLE */
+        .polaroid p {
+            text-align: center;
+            font-size: 15px;
+            margin-top: 10px;
+            font-family: 'Handlee', cursive;
+            color: #555;
+        }
 
-.polaroid{
-background:white;
-padding:15px 15px 40px 15px;
-box-shadow:0 8px 15px rgba(0,0,0,0.2);
-position:relative;
-text-align:center;
-}
+        /* Daisy decorations */
+        .daisy1, .daisy2 {
+            position: absolute;
+            width: 120px;
+            opacity: 0.7;
+            z-index: 10;
+        }
+        .daisy1 {
+            top: 10px;
+            left: 10px;
+            transform: rotate(-15deg);
+        }
+        .daisy2 {
+            bottom: 30px;
+            right: 30px;
+            transform: rotate(10deg);
+        }
 
-.polaroid img{
-width:100%;
-height:200px;
-object-fit:cover;
-}
+        /* Sticky note Bible verse */
+        .sticky-note {
+            background: #fff9a8;
+            width: 250px;
+            padding: 20px;
+            margin: 40px auto;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            transform: rotate(-3deg);
+            font-family: 'Handlee', cursive;
+            text-align: center;
+	color: black;
+        }
 
-.polaroid p{
-margin-top:10px;
-font-size:0.9em;
-}
-
-.tape{
-width:60px;
-height:20px;
-background:#f4e4bc;
-position:absolute;
-top:-10px;
-left:50%;
-transform:translateX(-50%) rotate(-5deg);
-opacity:0.8;
-}
-
-/* UPLOAD SECTION */
-
-.upload-section{
-background:white;
-padding:30px;
-margin:40px auto;
-width:60%;
-text-align:center;
-box-shadow:0 5px 10px rgba(0,0,0,0.1);
-border-radius:10px;
-}
-
-.upload-section textarea{
-width:80%;
-height:80px;
-}
-
-.upload-section input{
-padding:8px;
-}
-
-.upload-section button{
-padding:10px 20px;
-font-family:'Playfair Display', serif;
-cursor:pointer;
-}
-
-</style>
+        .reflection {
+            margin-top: 40px;
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #fff;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+        }
+    </style>
 </head>
 
 <body>
-
 <header>
-<h1>Natty's Diary</h1>
+    <h1>Dear Nate :) </h1>
+    <p>A personal space for my thoughts and memories</p>
+    <!-- New secondary header -->
+    <h1 class="secondary-header">Highlights of 2026</h1>
 </header>
-
-<h1 class="secondary-header">Highlights of 2026</h1>
-
-<!-- Upload New Entry -->
-
-<div class="upload-section">
-
-<h2>Add New Diary Entry</h2>
-
-<input type="text" id="monthInput" placeholder="Enter Month">
-
-<br><br>
-
-<input type="file" id="photoUpload" multiple accept="image/*">
-
-<br><br>
-
-<textarea id="captionInput" placeholder="Write captions separated by |"></textarea>
-
-<br><br>
-
-<button onclick="addEntry()">Add Entry</button>
-
-</div>
-
-
-<!-- Example Month -->
 
 <div class="background-section">
 
-<h2 class="month-title">January</h2>
+    <!-- Month title and subtitles -->
+    <h2 class="month-title">January </h2>
 
-<div class="scrapbook">
+    <!-- Daisy decorations -->
+    <img class="daisy1" src="daisy1.jpg" alt="Daisy">
+    <img class="daisy2" src="daisy2.png" alt="Daisy">
 
-<div class="polaroid">
-<div class="tape"></div>
-<img src="photo1.jpg">
-<p>New year dinner</p>
+    <!-- Scrapbook photos -->
+    <div class="scrapbook">
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Jan1.jpg" alt="Memory 1">
+            <p>A quiet beginning. A simple new year celebration at Cabuyao, Laguna with my loving husband and Aunties (Te Beka and Te Betty) </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Jan2.jpg" alt="Memory 2">
+            <p>Reuniting with mongs. A great time spent with friends, catching up about life, and we did exchanging gift, super fun. </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Jan3.jpg" alt="Memory 3">
+            <p>Honey's bday. Thanking God for another year He's given to my husband. Had a simple celebration with our church members. </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Jan4.jfif" alt="Memory 4">
+            <p>2nd Wedding Anniversary. Hubby treat me on a date at SM fairview. He bought me a branded jeans and we ate at Greenwich, very simple date it is. </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Jan5.jpg" alt="Memory 5">
+            <p>My baby Cosmo. Just a random quality time with cosmo, i just find the photo so cute hehehe. </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Jan6.jpg" alt="Memory 6">
+            <p>Fellowship. We attended the zone 2 youth and YA fellowship, hubby is the speaker, the theme is strengthening the faith through the Bible. </p>
+        </div>
+
+    </div>
+
+    <!-- Sticky note Bible verse -->
+    <div class="sticky-note">
+        <p>“Behold, I am doing a new thing; now it springs forth, do you not perceive it? I will make a way in the wilderness and rivers in the desert.” – Isaiah 43:19 </p>
+
+    </div>
+
+    <p class="reflection">
+        January felt like the soft opening of a new chapter.
+        Not loud, not rushed — just gentle reminders that beginnings
+        can be sacred and slow.
+    </p>
+
 </div>
+	<div class="background-section">
 
-<div class="polaroid">
-<div class="tape"></div>
-<img src="photo2.jpg">
-<p>Church fellowship</p>
+    <!-- Month title and subtitles -->
+    <h2 class="month-title">February </h2>
+   
+    <!-- Daisy decorations -->
+    <img class="daisy1" src="daisy1.jpg" alt="Daisy">
+    <img class="daisy2" src="daisy2.png" alt="Daisy">
+
+    <!-- Scrapbook photos -->
+    <div class="scrapbook">
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Feb1.jpg" alt="Memory 1">
+            <p>Mt. Balagbag. Went to balagbag for bday surprise of Jeffrey. Been there many times, but i'm still mesmerized of the breath-taking views. </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Feb2.jpg" alt="Memory 2">
+            <p>Museum date. Photo taken by my future brother-in-law(ambot lang if sure naba). We brought Roldan in Intramuros before his flight to China. Museum date will always be one of my fave. </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Feb3.jpg" alt="Memory 3">
+            <p>AFMC youth fellowish. I was the speaker for their fellowship with the theme, Unity in Christ. </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Feb4.jpg" alt="Memory 4">
+            <p>Heart's day. Honey suprises me with a flower and a crinkles, with special participation of Cosmo. Very sweet indeed. </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Feb5.jpg" alt="Memory 5">
+            <p>Ordination. Finally, the time has come that my two aunts are finally ordained. They deserve it not because of their own ability but because God has called them. Congratulations te Beka and te Betty. </p>
+        </div>
+
+        <div class="polaroid">
+            <div class="tape"></div>
+            <img src="Feb6.jpg" alt="Memory 6">
+            <p>JWTI Graduation. I completed my course last 2023, but I felt so blessed to be able to experience this event to finally wear toga again. Thank you Lord, may you use me as light and salt wherever you put me. </p>
+        </div>
+
+    </div>
+
+    <!-- Sticky note Bible verse -->
+    <div class="sticky-note">
+        <p>“Trust in the Lord with all your heart, and lean not on your own understanding; in all your ways acknowledge him, and he  will make your paths straight.” – Proverbs 3:5-6 </p>
+    </div>
+
+    <p class="reflection">
+        February was full of small, meaningful moments.
+        Each day brought a new reminder to be thankful and hopeful.
+    </p>
+
 </div>
-
-<div class="polaroid">
-<div class="tape"></div>
-<img src="photo3.jpg">
-<p>Coffee with hubby</p>
-</div>
-
-<div class="polaroid">
-<div class="tape"></div>
-<img src="photo4.jpg">
-<p>Cosmo sleeping</p>
-</div>
-
-<div class="polaroid">
-<div class="tape"></div>
-<img src="photo5.jpg">
-<p>Evening walk</p>
-</div>
-
-<div class="polaroid">
-<div class="tape"></div>
-<img src="photo6.jpg">
-<p>Sunset moment</p>
-</div>
-
-</div>
-</div>
-
-
-<script>
-
-function addEntry(){
-
-let month=document.getElementById("monthInput").value;
-let photos=document.getElementById("photoUpload").files;
-let captions=document.getElementById("captionInput").value.split("|");
-
-let section=document.createElement("div");
-section.className="background-section";
-
-let html=`<h2 class="month-title">${month}</h2>
-<div class="scrapbook">`;
-
-for(let i=0;i<photos.length;i++){
-
-let imgURL=URL.createObjectURL(photos[i]);
-let caption=captions[i] || "";
-
-html+=`
-<div class="polaroid">
-<div class="tape"></div>
-<img src="${imgURL}">
-<p>${caption}</p>
-</div>
-`;
-
-}
-
-html+=`</div>`;
-
-section.innerHTML=html;
-
-document.body.appendChild(section);
-
-}
-
-</script>
-
 </body>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
